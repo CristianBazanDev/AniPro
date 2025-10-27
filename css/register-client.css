@@ -1,0 +1,9 @@
+.register-new-client {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.register-new-client a{
+    width: 20%;
+}

@@ -1,0 +1,49 @@
+.layout {
+    display: flex !important;
+    flex-direction: column !important;
+    outline: 5px solid red !important;
+    height: 100%;
+    min-height: 100dvh;
+
+}
+
+header, main, footer {
+    padding: 1rem 2rem;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: var(--primary);
+    color: var(--light);
+}
+
+header nav {
+    display: flex;
+    gap: 1rem;
+}
+
+header nav a {
+    color: var(--light);
+}
+
+header nav .actions {
+    display: flex;
+    gap: 1rem;
+}
+
+header nav .actions .button {
+    padding: 0.5rem !important;
+}
+
+main {
+    flex: 1;
+    
+}
+
+footer {
+    background: var(--primary);
+    color: var(--light);
+}

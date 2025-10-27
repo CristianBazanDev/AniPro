@@ -1,0 +1,26 @@
+input{
+    padding: 1rem !important;
+}
+
+.button {
+    padding: 1rem !important;
+    border-radius: 15px !important;
+    text-align: center;
+    transition: filter 0.5s ease-in;
+}
+
+.button.primary {
+    background: var(--primary) !important;
+    color: var(--dark);
+    border: 1px solid var(--secondary);
+}
+
+.button.secondary {
+    background: var(--accent);
+    border: 1px solid var(--secondary);
+    color: var(--accent-dark) !important;
+}
+
+.button:hover{
+    filter: brightness(1.1);
+}

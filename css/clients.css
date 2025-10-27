@@ -1,0 +1,46 @@
+.clients .clients-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+    gap: 2rem;
+    place-items: center;
+}
+
+.clients  .clients-container .profile-card {
+    position: relative;          
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    width: 300px;
+    border-radius: 10px;
+    overflow: hidden;           
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.clients .clients-container .profile-card img  {
+      width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    object-fit: cover;
+    display: block;
+}
+
+.clients .clients-container .profile-card .actions {
+    position: absolute;
+    bottom: 0;
+    background: #22222268;
+    width: 100%;
+
+}
+
+.clients .clients-container .profile-card .actions .buttons-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.clients .clients-container .profile-card .actions .buttons-container button {
+    padding: 0.4rem !important;
+    border-radius: none !important;
+}
