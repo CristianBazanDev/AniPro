@@ -7,16 +7,16 @@ if (!$id) {
     echo json_encode(["error" => "Falta el parámetro del id"]);
 }
 
-$query = "SELECT * FROM clientes WHERE id = ?";
+$query = "SELECT * FROM usuarios WHERE id = ?";
 $command = $conn->prepare($query);
 $command->bind_param("i", $id); 
 $command->execute();
 $result = $command->get_result();
 
-if ($cliente = $result -> fetch_assoc()) {
+if ($usuario = $result -> fetch_assoc()) {
     header('Content-Type: application/json'); 
-    echo json_encode($cliente); 
+    echo json_encode($usuario); 
 } else {
     http_response_code(404); 
-    echo json_encode(["error" => "Cliente no encontrado"]);
+    echo json_encode(["error" => "Usuario no encontrado"]);
 }

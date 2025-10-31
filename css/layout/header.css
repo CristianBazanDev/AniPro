@@ -1,0 +1,113 @@
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: var(--light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+}
+
+header .options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+header .options .profile-icon {
+    stroke: currentColor;
+    fill: none;
+    width: 2rem;
+    height: 2rem;
+    color: var(--accent);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+header .options .profile-icon:hover {
+    transform: scale(1.2);
+    background: var(--accent);
+    clip-path: circle();
+    stroke: currentColor;
+    color: var(--dark);
+}
+
+
+header .options nav {
+    display: flex;
+    gap: 1rem;
+}
+
+header .options nav a {
+    color: var(--light);
+}
+
+header .options nav .actions {
+    display: flex;
+    gap: 1rem;
+}
+
+header .options nav .actions .button {
+    padding: 0.5rem !important;
+}
+
+/* Opciones del usuario  */
+
+header .user-options {
+    display: none;  
+    flex-direction: column;
+    position: absolute;
+    top: 90px;
+    right: 0;
+    background: var(--primary-low-op);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 20%;
+    padding: 2rem;
+    justify-content: space-between;
+    gap: 2rem;
+    transition: display 1m ease-in-out;
+    user-select: none ;
+    border-bottom-left-radius: 1rem; 
+
+}
+
+header .user-options.active {
+    display: flex;
+
+}
+
+
+header .user-options .actions {
+    display: flex;  
+    flex-direction: column;
+    gap: 0.5rem;
+    user-select: none ;
+}
+
+header .user-options .actions a{
+        user-select: none ;
+
+    color: var(--light);
+    border-bottom: 1px solid var(--light);
+    transition: transform 1s ease-in-out;
+}
+
+header .user-options .actions a:hover{
+    color: var(--accent);
+    transform: scale(1.2);
+    border-bottom: none;
+    filter: brightness(1.2);
+
+}

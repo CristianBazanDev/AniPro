@@ -6,7 +6,7 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 
-$title = "Proyecto Anipro";
+$title = "AniPro";
 
 $page = $_GET['view'] ?? 'home';
 

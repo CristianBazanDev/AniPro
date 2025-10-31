@@ -9,11 +9,11 @@ require 'db.php';
 $nombre = $_POST['nombre'];
 $email = $_POST['email'];
 
-$command = $conn->prepare("INSERT INTO clientes (nombre, email) VALUES (?, ?)");
+$command = $conn->prepare("INSERT INTO usuarios (nombre, email) VALUES (?, ?)");
 $command->bind_param("ss", $nombre, $email);
 
 if ($command->execute()) {
-    echo "Cliente registrado. <a href='./index.php?view=home'>Volver</a>";
+    echo "Usuario registrado. <a href='./index.php?view=home'>Volver</a>";
 } else {
     echo "Error: " . $command->error;
 }

@@ -11,7 +11,7 @@
 <body>
   <div class="login">
     <div class="title">
-      <img src="../assets/img/sakura.png" alt="">
+      <img class='character' src="../assets/img/sakura.png" alt="">
       <h2>Alta de nuevo usuario</h2>
 
     </div>

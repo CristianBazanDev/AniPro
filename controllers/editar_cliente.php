@@ -11,12 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         die("Faltan datos"); 
     }
 
-    $query = "UPDATE clientes SET nombre = ?, email = ?, profile_picture = ? WHERE id = ?"; 
+    $query = "UPDATE usuarios SET nombre = ?, email = ?, profile_picture = ? WHERE id = ?"; 
     $command = $conn->prepare($query); 
     $command-> bind_param("sssi", $nombre, $email, $profile_picture, $id);
     
     if ($command->execute()) {
-        header("Location: ../index.php?view=clientes"); 
+        header("Location: ../index.php?view=usuarios"); 
         exit;
     }else {
         echo "Error al actualizar: " . $conn->error;

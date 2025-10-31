@@ -1,5 +1,5 @@
-<div class="edit-client">
-    <form  method="POST" id="editForm" action="./controllers/editar_cliente.php">
+<div class="edit-user">
+    <form  method="POST" id="editForm" action="./controllers/editar_usuario.php">
         <input type="hidden" id="id" name="id">
         <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="form-control mb-2" required>
         <input type="email" id="email" name="email" placeholder="Email" class="form-control mb-2" required>
@@ -11,28 +11,28 @@
 </div>
 
 <script>
-    async function cargarCliente() {
+    async function cargarUsuario() {
         const params = new URLSearchParams(window.location.search); 
         const id = params.get('id'); 
         if (!id) return; 
 
         try {
-            const response = await fetch(`controllers/obtener_cliente.php?id=${id}`);
+            const response = await fetch(`controllers/obtener_usuario.php?id=${id}`);
 
-            const cliente = await response.json(); 
+            const usuario = await response.json(); 
 
-            console.log(cliente)
+            console.log(usuario)
 
-            document.getElementById('id').value = cliente.id;
-            document.getElementById('nombre').value = cliente.nombre; 
-            document.getElementById('email').value = cliente.email;
-            document.getElementById('profile_picture').value = cliente.profile_picture; 
+            document.getElementById('id').value = usuario.id;
+            document.getElementById('nombre').value = usuario.nombre; 
+            document.getElementById('email').value = usuario.email;
+            document.getElementById('profile_picture').value = usuario.profile_picture; 
 
 
         } catch (e) {
-            console.error("Error al cargar el cliente: ", e);
+            console.error("Error al cargar el usuario: ", e);
         }
     }
 
-    cargarCliente();
+    cargarUsuario();
 </script>
