@@ -12,18 +12,22 @@
     <link rel="stylesheet" href="./css/register-client.css">
     <link rel="stylesheet" href="./css/clients.css">
 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous"></head>
-<body>
+
+
+    <body>  
     <article class="layout">
         <header>
             <a href="./index.php?view=home" style="color: #ffffff !important">
-                <h1><?= $title ?? 'Mi sitio' ?></h1>
+                <!-- <h1><?= $title ?? 'Mi sitio' ?></h1> -->
+                    <img class='logo' src="./public/assets/img/logo/logo.png" alt="">
             </a>
 
             <div class="options">
                 <nav>
                     <a href="./index.php?view=home">Inicio</a>
-                    <a href="./index.php?view=home">Tienda</a>
+                    <a href="./index.php?view=tienda">Tienda</a>
                     <a href="./index.php?view=contactos">Contactos</a>
                     <a href="./index.php?view=empresa">Nosotros</a>
                 </nav>

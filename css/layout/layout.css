@@ -4,7 +4,6 @@
     outline: 5px solid red !important;
     height: 100%;
     min-height: 100dvh;
-
 }
 
 header, main, footer {
@@ -14,7 +13,6 @@ header, main, footer {
 
 main {
     flex: 1;
-    
 }
 
 footer {

@@ -1,16 +1,23 @@
 :root {
     --dark: #0b132b; 
+    --dark-low-op: #0b132ba8; 
     --primary: #1c2541; 
     --primary-low-op: #1c2541ca; 
     --secondary: #1c2541; 
     --accent: #6fffe9; 
     --accent-dark: #c0f1f0;
     --light: #ffffff;
+
+    --br: 0.625rem;
+}
+
+* {
+    user-select: none;
 }
 
 body {
     background: var(--dark) !important;
-    color: var(--primary) !important;
+    color: var(--light) !important;
 }
 
 a{

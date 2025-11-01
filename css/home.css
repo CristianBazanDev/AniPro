@@ -5,6 +5,57 @@
     gap: 3rem;
 }
 
+.home .loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;   
+    width: 100%;
+}
+
+
+.home .loading h3 {
+    color: var(--accent);
+    background: linear-gradient(90deg, var(--accent), #ff00c8, var(--accent));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: loadingText 2s linear infinite;
+}
+
+@keyframes loadingText {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+                background-position: 200% 50%;
+    }
+}
+
+.home .loading img {
+    max-width: 10rem;
+    animation: loadingImg 2s linear infinite;
+}
+
+@keyframes loadingImg{
+    0% {
+        filter: grayscale(50%);
+        filter: brightness(0.7);
+    }
+    50% {
+        filter: grayscale(0%);
+        filter: brightness(1.5);
+    }
+    100%{
+        filter: grayscale(50%);
+                filter: brightness(0.7);
+
+
+    }
+}
+
+
 .home .actions {
     display: flex;
     justify-content: space-between;
@@ -33,7 +84,26 @@
     overflow: hidden;           
     background: var(--dark);
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: transform 1s ease-in-out;
 }
+
+.home .anime-gallery .anime-card .heart-icon{
+    position: absolute;
+    max-width: 40px;
+    top: 0;
+}
+
+.home .anime-gallery .anime-card .heart-icon svg{
+    stroke: var(--accent);
+}
+
+/* .home .anime-gallery .anime-card:hover{
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 4px #6fffe9)
+            drop-shadow(0 0 8px #6fffe9)
+            drop-shadow(0 0 12px #6fffe9);
+} */
 
 .home .anime-gallery .anime-card img{
     width: 100%;
@@ -57,10 +127,18 @@
 .home .anime-gallery .anime-card > div {
     position: absolute;
     bottom: 10px;
-    left: 10px;
+    left: 0;
     right: 10px;
     color: white;
     z-index: 10;
+    padding: 1rem;
+}
+
+.home .anime-gallery .anime-card .caption.active {
+    width: 100%;
+    background: var(--dark-low-op);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 }
 
 .home .anime-gallery .anime-card > div h5,
@@ -69,9 +147,129 @@
     margin: 0 0 0.5em 0;
 }
 
+.home .anime-gallery .anime-card .more:hover{
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+}
+
+.home .anime-gallery .anime-card > div p {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.home .anime-gallery .anime-card div p.active {
+    opacity: 1;
+    max-height: 200px;
+      /* backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); */
+}
+
+
+
 .home .anime-gallery .anime-card > div button {
+    width: 100%;
     padding: 0.5rem;
-    background: var(--dark);
-    color: var(--light);
+    background: var(--accent);
+    color: var(--dark);
     border-radius: 15px;
 }
+
+/* Modal */
+
+.home .modal {
+    display: flex;  
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100dvh;
+    background: var(--primary-low-op);
+    outline: 5px solid red;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.home .modal .container {
+    content: ''; 
+    width: 80%;
+    height: 90%;
+    background: var(--primary);
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    border: 1px solid var(--accent);
+    border-radius: var(--br);
+}
+
+.home .modal .steps{
+    width: 100%;
+}
+
+.home .modal .steps .status{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.home .modal .steps .status .step {
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.home .modal .steps .status .step span{
+    color: var(--light);
+}
+
+.home .modal .steps .status .separator {
+    width: 66%;
+    height: 2px;
+    background: var(--light);
+    z-index: 0;
+    position: absolute;
+    bottom: 50px;
+}
+
+.home .modal .steps .status .separator.half {
+background: linear-gradient(to right, var(--accent) 50%, var(--light) 50%);
+}
+
+.home .modal .steps .status .separator.complete {
+background: linear-gradient(to right, var(--accent) 100%);
+}
+
+.home .modal .steps .status .step {
+    z-index: 10;
+    cursor: pointer ;
+}
+
+.home .modal .steps .status .step .indicator{
+    width: 1.25rem;
+    height: 1.25rem;
+    background: var(--light);
+    clip-path: circle();
+}
+
+.home .modal .steps .status .step.active .indicator {
+    background: var(--accent);
+}
+
+.home .modal .steps .status .step.active span {
+    color: var(--accent);
+}
+
+.home .modal .steps .status .step.disabled {
+    touch-action: none;
+}
+
+
+/* Secciones del modal de compra */
+
+.home .modal .options

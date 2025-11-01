@@ -13,7 +13,7 @@
   <div class="login-page">
     <div class="login">
       <div class="title">
-        <img class='character' src="../assets/img/kero.webp" alt="">
+        <img class='character' src="../public/assets/img/kero.webp" alt="">
         <h2>Iniciar sesión</h2>
       </div>
 
