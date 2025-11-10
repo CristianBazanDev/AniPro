@@ -74,7 +74,7 @@
 }
 
 
-.home .anime-gallery .anime-card {
+.anime-card{
     position: relative;          
     display: flex;
     flex-direction: column;
@@ -88,13 +88,13 @@
     transition: transform 1s ease-in-out;
 }
 
-.home .anime-gallery .anime-card .heart-icon{
+.anime-card .heart-icon{
     position: absolute;
     max-width: 40px;
     top: 0;
 }
 
-.home .anime-gallery .anime-card .heart-icon svg{
+.anime-card .heart-icon svg{
     stroke: var(--accent);
 }
 
@@ -105,7 +105,7 @@
             drop-shadow(0 0 12px #6fffe9);
 } */
 
-.home .anime-gallery .anime-card img{
+.anime-card img{
     width: 100%;
     height: auto;
     flex-shrink: 0;
@@ -113,7 +113,7 @@
     display: block;
 }
 
-.home .anime-gallery .anime-card::before {
+.anime-card::before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -124,7 +124,7 @@
     pointer-events: none;
 }
 
-.home .anime-gallery .anime-card > div {
+.anime-card > div {
     position: absolute;
     bottom: 10px;
     left: 0;

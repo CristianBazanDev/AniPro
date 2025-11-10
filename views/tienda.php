@@ -7,6 +7,7 @@
             <h4>Tipo</h4>
             <select name="tipo" id="tipo" class="form-control">
                 <option value="">Todos los tipos</option>
+                <option value="pelicula">Pelicula</option>
                 <option value="anime">Anime</option>
                 <option value="manga">Manga</option>
                 <option value="figura">Figura</option>

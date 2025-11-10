@@ -41,7 +41,7 @@
         </div>
         <hr>
        
-        <a href="./registrar_usuario.php" class="button secondary">Registrar nuevo vendedor</a>
+        <a href="./registrar_cliente.php" class="button secondary">Registrarme</a>
 
     </div>
 

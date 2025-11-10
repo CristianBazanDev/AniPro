@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="./css/layout/layout.css">
     <link rel="stylesheet" href="./css/layout/header.css">
     <link rel="stylesheet" href="./css/home.css">
-        <link rel="stylesheet" href="./css/shop.css">
+    <link rel="stylesheet" href="./css/shop.css">
+    <link rel="stylesheet" href="./css/empresa.css">
+    <link rel="stylesheet" href="./css/contacto.css">
 
     <link rel="stylesheet" href="./css/register-client.css">
     <link rel="stylesheet" href="./css/clients.css">
@@ -62,7 +64,7 @@
                             
                             <div class="section">
                                 <h5>Vendedores</h5>
-                                <a href="./index.php?view=registro_usuario" >Registrar nuevo vendedor</a>
+                                <a href="./index.php?view=registro_usuario&rol=3" >Registrar nuevo vendedor</a>
                                 <a href="./controllers/reportes/reporte_usuarios.php?tipo=vendedores"  target="_blank">Reporte de vendedores</a>
                             </div>
 

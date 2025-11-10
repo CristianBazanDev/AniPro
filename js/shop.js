@@ -8,7 +8,6 @@ const limpiarFiltrosBtn = document.getElementById('limpiarFiltros');
 let productos = [];
 let vendedores = [];
 
-// Cargar vendedores
 async function cargarVendedores() {
     try {
         const response = await fetch('./controllers/obtener_vendedores.php');
@@ -27,7 +26,6 @@ async function cargarVendedores() {
     }
 }
 
-// Cargar productos
 async function cargarProductos() {
     try {
         const busqueda = busquedaInput.value.trim();
@@ -58,7 +56,6 @@ async function cargarProductos() {
     }
 }
 
-// Renderizar productos
 function renderizarProductos() {
     if (!container) return;
     
@@ -73,7 +70,6 @@ function renderizarProductos() {
         renderCard(producto);
     });
     
-    // Agregar eventos a las tarjetas
     const buttonView = document.querySelectorAll('.anime-card div .more');
     const textContainer = document.querySelectorAll('.anime-card .caption');
     const paragraph = document.querySelectorAll('.anime-card div p');
@@ -91,7 +87,6 @@ function renderizarProductos() {
     });
 }
 
-// Renderizar una tarjeta de producto
 function renderCard(producto) {
     const card = document.createElement('div');
     card.classList.add('anime-card');
@@ -154,7 +149,6 @@ function renderCard(producto) {
     container.appendChild(card);
 }
 
-// Event listeners
 if (busquedaInput) {
     let timeout;
     busquedaInput.addEventListener('input', () => {
@@ -182,7 +176,6 @@ if (limpiarFiltrosBtn) {
     });
 }
 
-// Inicializar
 document.addEventListener('DOMContentLoaded', () => {
     cargarVendedores();
     cargarProductos();
