@@ -54,7 +54,7 @@ header .options nav {
 
 header .options nav a {
     color: var(--light);
-    transition: transform 1s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
 
@@ -99,6 +99,11 @@ header .user-options.active {
 
 }
 
+header .user-options .section {
+    display: flex;
+    flex-direction: column;
+}
+
 
 header .user-options .actions {
     display: flex;  
@@ -107,18 +112,23 @@ header .user-options .actions {
     user-select: none ;
 }
 
+header .user-options a,
 header .user-options .actions a{
-        user-select: none ;
-
+    user-select: none ;
     color: var(--light);
-    border-bottom: 1px solid var(--light);
-    transition: transform 1s ease-in-out;
+    /* border-bottom: 1px solid var(--light); */
+    transition: color 1s ease-in-out;
 }
 
 header .user-options .actions a:hover{
     color: var(--accent);
-    transform: scale(1.2);
-    border-bottom: none;
-    filter: brightness(1.2);
+        border-bottom: none;
 
+    /* transform: scale(1.2);
+    filter: brightness(1.2); */
+
+}
+
+header .user-options .section h5{
+    color: var(--accent);
 }

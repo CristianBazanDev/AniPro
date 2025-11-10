@@ -12,7 +12,7 @@
   <div class="login">
     <div class="title">
       <img class='character' src="../public/assets/img/sakura.png" alt="">
-      <h2>Alta de nuevo usuario</h2>
+      <h2>Alta de nuevo vendedor</h2>
 
     </div>
   <form action="../controllers/procesar_registro.php" method="POST">

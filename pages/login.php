@@ -18,7 +18,15 @@
       </div>
 
         <?php if (isset($_GET['error'])): ?>
-          <div class="alert alert-danger">Usuario o contraseña incorrectos</div>
+          <div class="alert alert-danger">
+            <?php 
+            if ($_GET['error'] == 'token_invalido') {
+              echo 'El enlace de recuperación ha expirado o es inválido';
+            } else {
+              echo 'Usuario o contraseña incorrectos';
+            }
+            ?>
+          </div>
         <?php endif; ?>
         <?php if (isset($_GET['success'])): ?>
           <div class="alert alert-success">Usuario registrado con éxito</div>
@@ -28,12 +36,13 @@
           <input type="password" name="password" placeholder="Contraseña" class="form-control mb-2" required>
           <button class="button primary">Ingresar</button>
         </form>
+        <div class="text-center mt-2 mb-3">
+          <a href="./recuperar-contrasenia.php" style="text-decoration: none; color: #666; font-size: 0.9rem;">¿Olvidaste tu contraseña?</a>
+        </div>
         <hr>
        
-        <a href="./registrar_usuario.php" class="button secondary">Registrar nuevo usuario</a>
+        <a href="./registrar_usuario.php" class="button secondary">Registrar nuevo vendedor</a>
 
-        </button>
-     
     </div>
 
   

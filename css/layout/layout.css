@@ -15,6 +15,30 @@ main {
     flex: 1;
 }
 
+main .carousel {
+  margin-left: -2rem;
+  margin-right: -2rem;
+  margin-top: -1rem;
+  width: calc(100% + 4rem);
+}
+
+main .carousel {
+  margin-left: -2rem;
+  margin-right: -2rem;
+  margin-top: -1rem;
+  width: calc(100% + 4rem);
+  max-height: 70vh; 
+  overflow: hidden; 
+  border-radius: 0;
+}
+
+main .carousel img {
+  object-fit: cover;  
+  height: 70vh;
+  width: 100%;
+}
+
+
 footer {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(12px);

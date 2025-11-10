@@ -1,0 +1,258 @@
+.shop {
+    display: flex;
+    width: 100%;
+    gap: 3rem;
+    padding: 2rem 0;
+}
+
+.shop .filters {
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--dark);
+    border-radius: var(--br);
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+}
+
+.shop .filters h3 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.shop .filters h4 {
+    color: var(--light);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.shop .filters input[type="search"],
+.shop .filters select {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--primary);
+    border: 1px solid var(--secondary);
+    border-radius: 8px;
+    color: var(--light);
+    font-size: 1rem;
+}
+
+.shop .filters input[type="search"]:focus,
+.shop .filters select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.shop .filters .filter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.shop .filters .button {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.shop .products {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.shop .products .loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+}
+
+.shop .products .loading h3 {
+    color: var(--accent);
+    background: linear-gradient(90deg, var(--accent), #ff00c8, var(--accent));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: loadingText 2s linear infinite;
+}
+
+@keyframes loadingText {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+.shop .products .loading img {
+    max-width: 10rem;
+    animation: loadingImg 2s linear infinite;
+}
+
+@keyframes loadingImg {
+    0% {
+        filter: grayscale(50%);
+        filter: brightness(0.7);
+    }
+    50% {
+        filter: grayscale(0%);
+        filter: brightness(1.5);
+    }
+    100% {
+        filter: grayscale(50%);
+        filter: brightness(0.7);
+    }
+}
+
+.shop .products-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    width: 100%;
+    gap: 2rem;
+    place-items: center;
+}
+
+.shop .products-gallery .no-products {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--light);
+    font-size: 1.2rem;
+    padding: 2rem;
+}
+
+/* Estilos para las tarjetas de productos (igual que home) */
+.shop .products-gallery .anime-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--dark);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: transform 1s ease-in-out;
+}
+
+.shop .products-gallery .anime-card .heart-icon {
+    position: absolute;
+    max-width: 40px;
+    top: 0;
+    z-index: 5;
+}
+
+.shop .products-gallery .anime-card .heart-icon svg {
+    stroke: var(--accent);
+}
+
+.shop .products-gallery .anime-card img {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    object-fit: cover;
+    display: block;
+}
+
+.shop .products-gallery .anime-card::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    pointer-events: none;
+}
+
+.shop .products-gallery .anime-card > div {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 10px;
+    color: white;
+    z-index: 10;
+    padding: 1rem;
+}
+
+.shop .products-gallery .anime-card .caption.active {
+    width: 100%;
+    background: var(--dark-low-op);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.shop .products-gallery .anime-card > div h5,
+.shop .products-gallery .anime-card > div p {
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
+    margin: 0 0 0.5em 0;
+}
+
+.shop .products-gallery .anime-card .more:hover {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+}
+
+.shop .products-gallery .anime-card > div p {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.shop .products-gallery .anime-card div p.active {
+    opacity: 1;
+    max-height: 200px;
+}
+
+.shop .products-gallery .anime-card > div button {
+    width: 100%;
+    padding: 0.5rem;
+    background: var(--accent);
+    color: var(--dark);
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+.shop .products-gallery .anime-card > div button:hover {
+    filter: brightness(1.2);
+}
+
+.shop .products-gallery .anime-card > div small {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.shop .products-gallery .anime-card .caption.active small {
+    opacity: 1;
+    max-height: 50px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .shop {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .shop .filters {
+        position: relative;
+        top: 0;
+    }
+    
+    .shop .products-gallery {
+        grid-template-columns: 1fr;
+    }
+}   

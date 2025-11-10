@@ -1,4 +1,44 @@
 <div class="home">
+
+<div id="carouselExampleCaptions" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="./public/assets/img/hero/hero-1.webp" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>La evolución del videoclub</h5>
+        <p>Porque podemos lucrar con la nostalgia</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="./public/assets/img/hero/hero-2.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Pendientes de la calidad</h5>
+        <p>No nos conformamos con qué las producciones existan, nos enfocamos en los procesos de curaduria necesarios para brindarle la mejor calidad.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="./public/assets/img/hero/hero-3.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Clásicos a la orden del día</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
   <div class="loading">
           <img src="./public/assets/img/logo/logo.png" alt="">
           <h3>Cargando...</h3>
@@ -11,7 +51,6 @@
   <div class="modal">
 
       <div class="container">
-
         <div class="steps">
 
             <div class="status">
@@ -45,108 +84,13 @@
               <h3>Pago</h3>
             </div>
 
-        <div class="shipping"></div>
-          <h3>Envio</h3>
-        </div>
-      </div>
+            <div class="shipping">
+              <h3>Envio</h3>
+            </div>
+          </div>
 
 
   </div>
 </div>
 
-<script>
-fetch('controllers/api/jikan.php')
-  .then(response => response.json())
-  .then(data => {
-    console.log('Datos recibidos:', data);
-
-    const loading = document.querySelector('.home .loading')
-    const container = document.querySelector('.anime-gallery');
-
-    loading.remove()
-    
-    container.innerHTML = '';
-
-
-    data.data.forEach((anime, index) => {
-      const card = document.createElement('div');
-      card.classList.add('anime-card');
-  
-      const img = document.createElement('img');
-      img.src = anime.images.jpg.large_image_url;
-      img.alt = anime.title;
-
-
-      const svgWrapper = document.createElement('div');
-      svgWrapper.classList.add('heart-icon');
-      svgWrapper.innerHTML = `
-       <svg className='favorite-icon' xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px" viewBox="0 0 100 125">
-          <g transform="translate(0,-952.36218)">
-          <path style="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;" d="m 31.748076,967.397 c -5.3435,0 -10.6868,2.09293 -14.718701,6.3125 -8.0640002,8.43897 -8.0536002,21.96169 0,30.4063 l 30.781201,32.2812 a 3.0003,3.0003 0 0 0 4.3438,0 c 10.2681,-10.7459 20.5442,-21.504 30.8125,-32.25 8.0638,-8.43911 8.0638,-21.96714 0,-30.40625 -8.0639,-8.43908 -21.3736,-8.43926 -29.4375,0 l -3.5313,3.65625 -3.5312,-3.6875 c -4.032,-4.21955 -9.3753,-6.3125 -14.7188,-6.3125 z m 0,5.875 c 3.7301,0 7.4855,1.53708 10.4063,4.59375 l 5.6875,5.96874 a 3.0003,3.0003 0 0 0 4.3437,0 l 5.6563,-5.93749 c 5.8415,-6.11346 14.9397,-6.11332 20.7812,0 5.8415,6.11329 5.8415,16.01169 0,22.125 -9.5402,9.9842 -19.0848,19.9534 -28.625,29.9375 l -28.625,-29.96871 c -5.838401,-6.1219 -5.841501,-16.0119 0,-22.12504 2.9207,-3.05665 6.6449,-4.59375 10.375,-4.59375 z" fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible" display="inline" overflow="visible"/></g>
-        </svg>
-      `;
-
-
-      const caption = document.createElement('div');
-      caption.classList.add('caption')
-
-      const h5 = document.createElement('h5');
-      h5.textContent = anime.title;
-
-      const p = document.createElement('p');
-      p.textContent = anime.synopsis ? anime.synopsis.substring(0, 100) + '...' : '';
-
-      const info = document.createElement('h5')
-      info.classList.add('more')
-      info.textContent = "Ver más"
-
-
-      const button = document.createElement('button')
-      button.classList.add('buy')
-      button.textContent = "Alquilar"
-
-      caption.appendChild(h5);
-      caption.appendChild(p);
-      caption.appendChild(info)
-      caption.appendChild(button)
-
-      card.appendChild(svgWrapper)
-      card.appendChild(img);
-      card.appendChild(caption)
-
-
-      container.appendChild(card);
-    });
-
-    const buttonView = document.querySelectorAll('.anime-card div .more')
-    const textContainer = document.querySelectorAll('.anime-card .caption')
-    const paragraph = document.querySelectorAll('.anime-card div p')
-
-    buttonView.forEach((button, index) => {
-        button.addEventListener('mouseenter', () => {
-            textContainer[index].classList.add('active')
-            paragraph[index].classList.add('active')
-        })
-
-        button.addEventListener('mouseleave', () => {
-            textContainer[index].classList.remove('active')
-            paragraph[index].classList.remove('active')
-        })
-    })
-
-    const buttonsAction = document.querySelectorAll('.anime-card .caption .buy')
-    const modal = document.querySelector('.home .modal')
-
-    buttonsAction.forEach((button, index) => {
-      button.addEventListener('click', () => {
-        
-      })
-    })
-
-
-  })
-  .catch(error => {
-    console.error('Error al cargar la API:', error);
-  });
-</script>
-
+<script src='./js/api.js'></script>

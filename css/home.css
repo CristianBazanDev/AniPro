@@ -179,7 +179,7 @@
 /* Modal */
 
 .home .modal {
-    display: flex;  
+    display: none;  
     position: fixed;
     top: 0;
     width: 100%;
@@ -189,6 +189,10 @@
     z-index: 1000;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+}
+
+.home .modal.active {
+    display: flex;
 }
 
 .home .modal .container {
@@ -272,4 +276,10 @@ background: linear-gradient(to right, var(--accent) 100%);
 
 /* Secciones del modal de compra */
 
-.home .modal .options
+.home .modal .option > div {
+    display: none;
+}
+
+.home .modal .option > div.current {
+    display: flex;
+}

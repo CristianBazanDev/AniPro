@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="./css/layout/layout.css">
     <link rel="stylesheet" href="./css/layout/header.css">
     <link rel="stylesheet" href="./css/home.css">
+        <link rel="stylesheet" href="./css/shop.css">
+
     <link rel="stylesheet" href="./css/register-client.css">
     <link rel="stylesheet" href="./css/clients.css">
 
@@ -28,7 +30,7 @@
                 <nav>
                     <a href="./index.php?view=home">Inicio</a>
                     <a href="./index.php?view=tienda">Tienda</a>
-                    <a href="./index.php?view=contactos">Contactos</a>
+                    <a href="./index.php?view=contacto">Contacto</a>
                     <a href="./index.php?view=empresa">Nosotros</a>
                 </nav>
 
@@ -43,20 +45,69 @@
 
 
             <div class="user-options">
-                    <h3>Bienvenido, <?= $_SESSION['usuario'] ?></h3>
 
+                    <div class="titles">
+                            <h3>Bienvenido, <?= $_SESSION['usuario'] ?></h3>
+                            <a href="./index.php?view=profile">Mi Perfil</a>
+                    </div>
+                    
                     <div class="actions">
                     
-                        <?php if ($_SESSION['rol'] === 'usuario'): ?>
-                            <a class="button primary" href="perfil.php">Mi Perfil</a>
+                        <?php if ($_SESSION['rol'] === 'admin'): ?>
+                            <div class="section">
+                                <h5>Ventas</h5>
+                                <a href="./index.php?view=usuarios" >Ver</a>
+                                <a href="./controllers/reportes/reporte_usuarios.php?tipo=ventas"  target="_blank">Reporte de ventas</a>
+                            </div>
+                            
+                            <div class="section">
+                                <h5>Vendedores</h5>
+                                <a href="./index.php?view=registro_usuario" >Registrar nuevo vendedor</a>
+                                <a href="./controllers/reportes/reporte_usuarios.php?tipo=vendedores"  target="_blank">Reporte de vendedores</a>
+                            </div>
+
+                            <div class="section">
+                                <h5>Usuarios</h5>
+                                <a href="./index.php?view=usuarios" >Ver usuarios</a>
+                                <a href="./controllers/reportes/reporte_usuarios.php?tipo=usuarios"  target="_blank">Reporte de usuarios</a>
+                            </div>
+                            
+                            <div class="section">
+                                <h5>Productos</h5>
+                                <a href="./index.php?view=tienda" >Ver productos</a>
+                                <a href="./index.php?view=crear_producto" >Crear nuevo producto</a>
+                            </div>
+                            
+                            <?php endif; ?>
+
+                        <?php if ($_SESSION['rol'] === 'seller'): ?>
+                            <div class="section">
+                                <h5>Ventas</h5>
+                                <a href="./index.php?view=usuarios" >Ver</a>
+                                <a href="./controllers/reportes/reporte_usuarios.php?tipo=ventas"  target="_blank">Reporte de ventas</a>
+                            </div>
+                            
+                            <div class="section">
+                                <h5>Productos</h5>
+                                <a href="./index.php?view=tienda" >Ver productos</a>
+                                <a href="./index.php?view=crear_producto" >Crear nuevo producto</a>
+                            </div>
+                            
+                            
                         <?php endif; ?>
 
+                        <?php if ($_SESSION['rol'] === 'user'): ?>
+                            <div class="section">
+                                <h5>Favoritos</h5>
+                                <a href="./index.php?view=usuarios" >Ver favoritos</a>
+                            </div>
 
-                        <?php if ($_SESSION['rol'] === 'admin'): ?>
-                            <a href="./index.php?view=registro_usuario" >Registrar nuevo usuario</a>
-                            <a href="./index.php?view=usuarios" >Ver usuarios</a>
-                            <a href="./controllers/reportes/reporte_usuarios.php"  target="_blank">Descargar PDF Usuarios</a>
-                            <?php endif; ?>
+                            <div class="section">
+                                <h5>Compras</h5>
+                                <a href="./index.php?view=usuarios" >Ver compras</a>
+                                <a href="./controllers/reportes/reporte_usuarios.php?tipo=compras"  target="_blank">Reporte de compras</a>
+                            </div>    
+                        <?php endif; ?>
 
                     </div>
 
@@ -78,6 +129,79 @@
             <p>Todos los derechos reservados <?= date('Y') ?></p>
         </footer>
     </article>
+
+    <!-- Modal de Usuario Creado -->
+    <?php if (isset($_SESSION['usuario_creado'])): 
+        $usuario_creado = $_SESSION['usuario_creado'];
+        unset($_SESSION['usuario_creado']); // Limpiar la sesión después de guardar en variable
+    ?>
+    <div class="modal fade" id="usuarioCreadoModal" tabindex="-1" aria-labelledby="usuarioCreadoModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="usuarioCreadoModalLabel">
+                        ✓ Usuario registrado exitosamente
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <p class="mb-1"><strong>Usuario:</strong> <?= htmlspecialchars($usuario_creado['usuario']) ?></p>
+                        <?php if (!empty($usuario_creado['email'])): ?>
+                            <p class="mb-1"><strong>Email:</strong> <?= htmlspecialchars($usuario_creado['email']) ?></p>
+                        <?php endif; ?>
+                        <p class="mb-3"><strong>Rol:</strong> <?= htmlspecialchars($usuario_creado['rol']) ?></p>
+                    </div>
+                    
+                    <div class="alert alert-warning" role="alert">
+                        <h6 class="alert-heading"><strong>⚠️ CONTRASEÑA TEMPORAL</strong></h6>
+                        <hr>
+                        <p class="mb-2">
+                            <code id="passwordText" style="font-size: 18px; font-weight: bold; color: #d32f2f; background: #fff; padding: 5px 10px; border-radius: 4px;">
+                                <?= htmlspecialchars($usuario_creado['password']) ?>
+                            </code>
+                        </p>
+                        <small class="text-muted">Comunica esta contraseña al usuario. Se recomienda que la cambie en su primer inicio de sesión.</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="copiarContrasena()">Copiar contraseña</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modalElement = document.getElementById('usuarioCreadoModal');
+            if (modalElement) {
+                const modal = new bootstrap.Modal(modalElement);
+                modal.show();
+            }
+        });
+
+        function copiarContrasena() {
+            const passwordText = document.getElementById('passwordText');
+            const contrasena = passwordText ? passwordText.textContent.trim() : '';
+            
+            if (contrasena) {
+                navigator.clipboard.writeText(contrasena).then(function() {
+                    alert('Contraseña copiada al portapapeles');
+                }, function() {
+                    // Fallback para navegadores que no soportan clipboard API
+                    const textArea = document.createElement('textarea');
+                    textArea.value = contrasena;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('Contraseña copiada al portapapeles');
+                });
+            }
+        }
+    </script>
+    <?php endif; ?>
+
     <script src='./js/interaction.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
